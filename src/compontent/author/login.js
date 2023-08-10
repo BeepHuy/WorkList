@@ -1,6 +1,6 @@
 import React from 'react'
-import {sigInWithGoogle} from './firebase'
-import './login.css'
+import {sigInWithGoogle} from '../firebase'
+import '../../style/login.css'
 import anhlogin from '../../images/login.jpg'
 import anhgoogle from '../../images/google.png'
 import anhfacebook from '../../images/facebook.png'

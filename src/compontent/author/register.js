@@ -1,5 +1,5 @@
 import React from 'react'
-import './register.css'
+import '../../style/register.css'
 import anhregister from '../../images/regiter.jpg'
 
 function register() {
