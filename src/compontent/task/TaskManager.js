@@ -8,6 +8,8 @@ import {db, handleSignOut} from '../firebase'
 function TaskManager() {
   const [openAddModal, setOpenAddModal] = useState(false)
   const [tasks, setTasks] = useState([])
+  const [quee, setQuery] = useState('');
+  // console.log(quee);
 
   /* function to get all tasks from firestore in realtime */ 
   useEffect(() => {
@@ -23,6 +25,8 @@ function TaskManager() {
     })
   },[])
 
+  
+
   return (
     <div className='taskManager'>
        <nav className='nav-app'>
@@ -35,7 +39,13 @@ function TaskManager() {
           </div>
 
           <div className='nav-item'>
-            <input type="text" className='nav-input' placeholder='Tìm Kiếm'/>
+            
+            <input 
+              type="text" 
+              className='nav-input search' 
+              placeholder='Tìm Kiếm'
+              onChange={(e) => setQuery(e.target.value)}
+              />
             <i className="search icon nav-icon2"></i>
           </div>
 
@@ -86,7 +96,10 @@ function TaskManager() {
             </div>
           </aside>
           <section className='section-main'>
-              {tasks.map((task) => (
+              {tasks.filter((task) => 
+              task.data.title.toLowerCase().includes(quee) ||
+              task.data.description.toLowerCase().includes(quee)
+              ).map((task) => (
                 <Task
                   id={task.id}
                   key={task.id}
